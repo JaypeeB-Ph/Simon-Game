@@ -7,6 +7,8 @@ var userClickedPattern = [];
 var started = false;
 var level = 0;
 
+alert("Game Instruction \nIn each level there is a new sequence you need memorize each and clear as many levels as you can.\n ENJOY THE SIMON GAME!");
+
 $(document).keypress(function() {
   if (!started) {
     $("#level-title").text("Level " + level);
