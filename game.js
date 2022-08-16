@@ -6,8 +6,29 @@ var userClickedPattern = [];
 
 var started = false;
 var level = 0;
+var detectTap = false;
 
 alert("Game Instruction \nIn each level there is a new sequence you need memorize each and clear as many levels as you can.\n ENJOY THE SIMON GAME!");
+
+$(document).on('touchstart', function() {
+    detectTap = true; // Detects all touch events
+});
+$(document).on('touchmove', function() {
+    detectTap = false; // Excludes the scroll events from touch events
+});
+
+$(document).on('click touchend', function(event) {
+    if (event.type == "click") detectTap = true; // Detects click events
+       if (detectTap){
+          // Here you can write the function or codes you want to execute on tap
+          if (!started) {
+              $("#level-title").text("Level " + level);
+              nextSequence();
+              started = true;
+             }
+       }
+ });
+
 
 $(document).keypress(function() {
   if (!started) {
